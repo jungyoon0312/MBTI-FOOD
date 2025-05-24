@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MBTI별 다이어트 추천</title>
-  <meta name="description" content="MBTI별로 다이어트에 좋은 추천메뉴와 식단의 포인트를 확인하세요!">
+  <title>MBTI별 다이어트 추천 | 성격유형별 건강 식단</title>
+  <meta name="description" content="MBTI별로 다이어트에 좋은 추천메뉴와 식단의 포인트를 확인하세요! 성격유형에 맞는 건강한 다이어트 식단을 쉽고 재미있게 추천받으세요.">
+  <meta name="keywords" content="MBTI, 다이어트, 식단, 건강, 추천, 성격유형, 음식, 메뉴, 다이어트 식단, MBTI별 식단">
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Open Graph (SNS 공유 썸네일 등) -->
+  <meta property="og:title" content="MBTI별 다이어트 추천 | 성격유형별 건강 식단" />
+  <meta property="og:description" content="MBTI별로 다이어트에 좋은 추천메뉴와 식단의 포인트를 확인하세요!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mbti-food.netlify.app" />
+  <meta property="og:image" content="https://mbti-food.netlify.app/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MBTI별 다이어트 추천 | 성격유형별 건강 식단" />
+  <meta name="twitter:description" content="MBTI별로 다이어트에 좋은 추천메뉴와 식단의 포인트를 확인하세요!" />
+  <meta name="twitter:image" content="https://mbti-food.netlify.app/og-image.png" />
+
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -150,86 +166,4 @@
     // 16가지 MBTI별 추천메뉴와 식단의 포인트 데이터
     const mbtiDiet = {
       ISTJ: {
-        menu: ['닭가슴살 샐러드', '현미밥과 구운 연어', '브로콜리 스팀', '계란찜'],
-        reason: '계획적이고 성실한 ISTJ는 규칙적인 식단과 장기 플랜에 강점이 있습니다. 체계적인 식단을 통해 스트레스 없이 건강하게 다이어트를 지속할 수 있습니다.'
-      },
-      ISFJ: {
-        menu: ['그릭요거트와 베리', '닭가슴살 샌드위치', '혼합 견과류', '야채스틱'],
-        reason: '꾸준함과 안정감을 중시하는 ISFJ는 소박하고 지속 가능한 식단이 잘 맞습니다. 건강한 간식과 습관화가 중요합니다.'
-      },
-      INFJ: {
-        menu: ['유기농 샐러드', '렌틸콩 스튜', '두부구이', '통밀빵'],
-        reason: '가치와 조화를 중시하는 INFJ는 윤리적이고 건강한 식재료를 선호합니다. 장기적인 목표와 내면 동기가 다이어트에 큰 힘이 됩니다.'
-      },
-      INTJ: {
-        menu: ['연어구이', '아보카도 샐러드', '닭가슴살 스테이크', '오트밀'],
-        reason: '효율과 논리를 중시하는 INTJ는 영양소 밸런스와 과학적으로 검증된 식단을 선호합니다. 식단 앱 활용과 주간 계획이 효과적입니다.'
-      },
-      ISTP: {
-        menu: ['스무디 볼', '생선 타코', '스테이크와 그릴드 채소', '과일&치즈'],
-        reason: '즉흥적이고 자유로운 ISTP는 다양한 음식과 변화를 즐깁니다. 고정된 계획보다는 자유롭게 선택할 수 있는 식단이 잘 맞습니다.'
-      },
-      ISFP: {
-        menu: ['아보카도 토스트', '과일 샐러드', '비빔밥(현미)', '다크 초콜릿'],
-        reason: '감성적이고 예술적인 ISFP는 신선한 재료와 예쁜 플레이팅, 분위기를 살린 식단이 동기부여에 효과적입니다.'
-      },
-      INFP: {
-        menu: ['견과류&과일', '채소스틱', '그릭요거트', '통밀 토스트'],
-        reason: '이상과 의미를 추구하는 INFP는 감정 컨트롤과 소분식, 건강한 간식 위주의 식단이 잘 맞습니다. 작은 변화를 주는 것이 도움이 됩니다.'
-      },
-      INTP: {
-        menu: ['아보카도', '베리', '견과류', '다크초콜릿'],
-        reason: '논리적이고 분석적인 INTP는 간단하면서도 영양소가 풍부한 식단을 선호합니다. 뇌 건강과 창의성을 지원하는 식단이 좋습니다.'
-      },
-      ESTP: {
-        menu: ['닭가슴살 랩', '퀴노아 샐러드', '과일 스무디', '닭꼬치'],
-        reason: '사교적이고 활동적인 ESTP는 다양한 음식과 외식을 즐깁니다. 다이어트 메이트와 함께하면 더욱 효과적입니다.'
-      },
-      ESFP: {
-        menu: ['라이브 샐러드', '과일 플레이트', '닭가슴살 파니니', '그릭요거트'],
-        reason: '다채롭고 사교적인 ESFP는 다양한 메뉴와 외식, 간편식을 즐깁니다. 친구와 함께하는 다이어트가 잘 맞습니다.'
-      },
-      ENFP: {
-        menu: ['과일샐러드', '오트밀과 견과류', '아보카도 토스트', '그릭요거트 볼'],
-        reason: '다양하고 창의적인 메뉴를 선호하는 ENFP는 여러 재료를 돌려 쓰는 방식이 동기부여에 좋습니다. 재미와 변화를 주는 식단이 지속에 도움이 됩니다.'
-      },
-      ENTP: {
-        menu: ['채식 샐러드', '식단 배달 서비스', '다양한 샌드위치', '스무디'],
-        reason: '새로운 방법을 시도하는 ENTP는 유연한 사고와 다양한 식단을 즐깁니다. 변화를 주는 것이 지루함을 막아줍니다.'
-      },
-      ESTJ: {
-        menu: ['닭가슴살&채소', '현미밥', '계란찜', '두부구이'],
-        reason: '목표 지향적이고 자기관리가 뛰어난 ESTJ는 체계적이고 규칙적인 식단이 잘 맞습니다. 구체적인 목표 설정과 기록 습관이 효과적입니다.'
-      },
-      ESFJ: {
-        menu: ['다양한 샐러드', '닭가슴살', '통곡물 샌드위치', '과일'],
-        reason: '계획적이고 사교적인 ESFJ는 가족이나 친구와 함께하는 식단, 그리고 계획적인 식사 관리가 잘 맞습니다.'
-      },
-      ENFJ: {
-        menu: ['그릴드 치킨 샐러드', '퀴노아볼', '토마토 파스타', '그릭요거트'],
-        reason: '이상과 조화를 중시하는 ENFJ는 균형 잡힌 식단과 그룹 요리, 공유 경험을 즐깁니다. 사교적 식사와 공동체와 함께하는 다이어트가 효과적입니다.'
-      },
-      ENTJ: {
-        menu: ['고단백 샐러드', '닭가슴살 스테이크', '퀴노아와 채소', '계란 오믈렛'],
-        reason: '효율과 성취를 중시하는 ENTJ는 빠르고 간편한 고단백 식단을 선호합니다. 명확한 목표와 계획이 성공의 열쇠입니다.'
-      }
-    };
-
-    function showDiet() {
-      const mbti = document.getElementById('mbti').value;
-      const resultDiv = document.getElementById('result');
-      if (!mbti || !mbtiDiet[mbti]) {
-        resultDiv.innerHTML = '<h3>⚠️ MBTI를 선택해주세요!</h3>';
-        return;
-      }
-      const data = mbtiDiet[mbti];
-      let html = `<h2>${mbti} 추천 다이어트</h2>`;
-      html += `<h3>식단의 포인트</h3><p>${data.reason}</p>`;
-      html += '<h3>추천메뉴</h3><ul>';
-      data.menu.forEach(item => html += `<li>${item}</li>`);
-      html += '</ul>';
-      resultDiv.innerHTML = html;
-    }
-  </script>
-</body>
-</html>
+        menu: ['닭가슴살 샐러드', '현미밥과 구운 연
