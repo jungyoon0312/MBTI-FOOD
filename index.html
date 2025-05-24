@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MBTI 다이어트 추천</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fffbe7;
+      color: #333;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    .result {
+      background: #fefae0;
+      border: 2px dashed #f9c74f;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .mbti-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .mbti-desc {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .menu-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-list li {
+      background-color: #fcd5ce;
+      margin: 6px auto;
+      padding: 10px;
+      border-radius: 6px;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌿 MBTI별 다이어트 추천</h1>
+  <select id="mbtiSelect">
+    <option value="">-- MBTI를 선택하세요 --</option>
+    ${["INTJ","INTP","ENTJ","ENTP","INFJ","INFP","ENFJ","ENFP",
+        "ISTJ","ISFJ","ESTJ","ESFJ","ISTP","ISFP","ESTP","ESFP"]
+      .map(type => `<option value="${type}">${type}</option>`).join("")}
+  </select>
+
+  <div id="result" class="result" style="display: none;"></div>
+
+  <script>
+    const data = {
+      INTJ: {
+        desc: "계획적인 식단과 저탄고지, 간헐적 단식이 잘 맞아요.",
+        menus: ["닭가슴살 아보카도 샐러드", "저탄수 콜리플라워 볶음밥", "16:8 간헐적 단식"]
+      },
+      INTP: {
+        desc: "간편하고 효율적인 식사가 좋아요. 정해진 식사 루틴보단 자유롭게.",
+        menus: ["오트밀 바", "단백질 쉐이크", "미리 준비된 도시락"]
+      },
+      ENTJ: {
+        desc: "목표 중심형! 수치 관리가 되는 다이어트에 강해요.",
+        menus: ["탄단지 균형 도시락", "식단 어플 연동 식품", "고단백 닭가슴살 볶음"]
+      },
+      ENTP: {
+        desc: "금방 질릴 수 있으니 다양한 시도와 유연한 식단이 필요해요.",
+        menus: ["테마별 다이어트 도시락", "샐러드 볼 만들기 키트", "이국적인 요리 도전"]
+      },
+      INFJ: {
+        desc: "건강과 의미를 중요시해서 비건식이나 클린식단을 선호해요.",
+        menus: ["채소 듬뿍 비건 샐러드", "현미 채식 볶음", "두부 스테이크"]
+      },
+      INFP: {
+        desc: "감정 기복이 있어 스트레스를 주지 않는 식단이 좋아요.",
+        menus: ["연어 샐러드", "귀리 그래놀라 요거트", "바나나 + 땅콩버터"]
+      },
+      ENFJ: {
+        desc: "함께하는 다이어트를 좋아해요. 공유 가능한 식단이 좋아요.",
+        menus: ["가족식 건강 도시락", "홈메이드 샌드위치", "다같이 샐러드 만들기"]
+      },
+      ENFP: {
+        desc: "재미있어야 지속돼요. 컬러풀하고 다양한 메뉴가 좋아요.",
+        menus: ["한입 다이어트 김밥", "버섯 크림 닭가슴살 도시락", "컬러풀 과일 도시락"]
+      },
+      ISTJ: {
+        desc: "정확한 시간, 정해진 루틴에 맞춘 식사가 잘 맞아요.",
+        menus: ["현미밥 + 반찬 정식", "아침/점심/저녁 도시락 세트", "시간표 기반 식단"]
+      },
+      ISFJ: {
+        desc: "꾸준함이 강점! 건강한 집밥 스타일이 좋아요.",
+        menus: ["현미밥 + 된장국 + 채소반찬", "구운 두부 샐러드", "오트밀 바나나죽"]
+      },
+      ESTJ: {
+        desc: "효율과 성과 중심! 정량화된 식단을 선호해요.",
+        menus: ["매크로 계산된 도시락", "헬스식 + 단백질 간식", "스케줄 식사표"]
+      },
+      ESFJ: {
+        desc: "주변 사람과 함께 건강해지는 식단을 좋아해요.",
+        menus: ["홈메이드 도시락 공유", "샐러드 파티", "같이 요리하기"]
+      },
+      ISTP: {
+        desc: "자율적인 방식이 중요! 간편식과 단백질 위주의 식단이 좋아요.",
+        menus: ["삶은 계란 + 과일", "닭가슴살볼", "그릭요거트"]
+      },
+      ISFP: {
+        desc: "분위기와 감성을 중요시해서 감각적인 건강식이 좋아요.",
+        menus: ["비주얼 좋은 샐러드", "아보카도 크림 샌드위치", "플레이트 스타일 도시락"]
+      },
+      ESTP: {
+        desc: "즉흥적이지만 실행력 강함! 외식도 조절할 수 있어요.",
+        menus: ["헬시 보울", "카페 샐러드 + 프로틴 음료", "운동 전후 단백질 간식"]
+      },
+      ESFP: {
+        desc: "즐거운 분위기에서 식사하며 예쁜 음식에 끌려요.",
+        menus: ["컬러플 과일 샐러드", "베이글 + 그릭요거트", "심플한 브런치 스타일"]
+      }
+    };
+
+    const select = document.getElementById("mbtiSelect");
+    const resultDiv = document.getElementById("result");
+
+    select.addEventListener("change", () => {
+      const mbti = select.value;
+      if (!mbti || !data[mbti]) {
+        resultDiv.style.display = "none";
+        return;
+      }
+
+      const { desc, menus } = data[mbti];
+
+      resultDiv.innerHTML = `
+        <div class="mbti-title">[${mbti}] 추천 식단</div>
+        <div class="mbti-desc">💡 ${desc}</div>
+        <ul class="menu-list">
+          ${menus.map(menu => `<li>🍴 ${menu}</li>`).join("")}
+        </ul>
+      `;
+      resultDiv.style.display = "block";
+    });
+  </script>
+</body>
+</html>
